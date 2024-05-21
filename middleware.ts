@@ -1,9 +1,7 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 
-export default authMiddleware()
+export default authMiddleware();
 
 export const config = {
-  // The following matcher runs middleware on all routes
-  // except static assets.
-  matcher: [ '/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
