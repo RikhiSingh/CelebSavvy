@@ -1,3 +1,5 @@
+import { Navbar } from "@/components/navbar";
+
 const RootLayout = ({
     children
 }:{
