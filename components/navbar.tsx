@@ -7,6 +7,7 @@ import { UserButton } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const font = Poppins({
     weight: "600",
@@ -32,6 +33,7 @@ export const Navbar = () => {
                     Upgrade 
                     <Sparkles className="h-4 w-4 fill-white text-white ml-2"/>
                 </Button>
+                <ModeToggle />
                     <UserButton />
             </div>
         </div>
