@@ -2,4 +2,5 @@ npx prisma generate
 npx prisma db push
 npx prisma studio
 
-using supabase for this one
+script required in supabase
+CREATE EXTENSION IF NOT EXISTS pg_trgm;

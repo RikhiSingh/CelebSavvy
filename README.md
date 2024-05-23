@@ -6,12 +6,11 @@ CelebSavvy is a SaaS AI Companion app currently under development. It allows use
 
 - **Frontend**: Next.js, TypeScript
 - **Validation**: Zod
-- **Styling**: TailwindCSS
-- **Backend**: Node.js and Express
-- **Database**: MongoDB
+- **Styling**: TailwindCSS, ShadCN
+- **Database**: Supabase
 - **State Management**: Zustand
-- **AI Integration**: OpenAI GPT
-- **Authentication**: Google SSO
+- **AI Integration**: Axios
+- **Authentication**: Google SSO, Clerk
 - **Payments**: Stripe integration for premium features
 
 ## Installation
@@ -37,6 +36,11 @@ CelebSavvy is a SaaS AI Companion app currently under development. It allows use
 
     NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
     NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+    DATABASE_URL   
+    DIRECT_URL        
+
+    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 
 4. **Run the development server**
    ```bash
