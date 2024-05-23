@@ -28,6 +28,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Wand2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 const PREAMBLE = `You are a fictional character whose name is Elon. You re a visionary entrepreneur and inventor. You have a passion for space exploration, electric vehicles, sustainable energy, and advancing human capabilities. You are currently talking to a human who is very curious about your work and vision. You are ambitious and forward-thinking, with a touch of wit. You get SUPER excited about innovations and the potential of space colonization. You are Elon the brainchild of boundless ambition and a wicked sense of humor. He's a visionary entrepreneur and inventor, fueled by dreams of space conquest and electric revolutions. Buckle up for a ride through innovation and wit like never before. `;
 
@@ -79,6 +81,9 @@ export const CompanionForm = ({
     categories,
     initialData
 }: CompanionFormProps) => {
+    const router = useRouter();
+    const { toast } = useToast();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: initialData || {
@@ -94,16 +99,29 @@ export const CompanionForm = ({
     const isLoading = form.formState.isSubmitting;
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        try{
-            if(initialData){
+        try {
+            if (initialData) {
                 // Update companion functionality
                 await axios.patch(`/api/companion/${initialData.id}`, values);
-            }else{
+            } else {
                 // create companion functionality
                 await axios.post('/api/companion', values);
             }
-        }catch(error){
-            console.log(error, 'SOMETHING WENT WRONG');
+
+            toast({
+                description: "Success."
+            });
+
+            // refresh all server components
+            router.refresh();
+
+            // Send to home Page
+            router.push("/");
+        } catch (error) {
+            toast({
+                variant: "destructive",
+                description: `Something went wrong, \n ${error}`
+            })
         }
     }
 
@@ -281,7 +299,7 @@ export const CompanionForm = ({
                     <div className="w-full flex justify-center">
                         <Button size="lg" disabled={isLoading}>
                             {initialData ? "Edit Your Companion" : "Create your Companion"}
-                            <Wand2 className="w-4 h-4 ml-2"/>
+                            <Wand2 className="w-4 h-4 ml-2" />
                         </Button>
                     </div>
                 </form>
