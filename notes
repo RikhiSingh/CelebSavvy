@@ -2,5 +2,9 @@ npx prisma generate
 npx prisma db push
 npx prisma studio
 
+// For Seed Script
+node .\scripts\seed.ts
+
+
 script required in supabase
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
