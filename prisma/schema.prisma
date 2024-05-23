@@ -12,9 +12,9 @@ generator client {
 }
 
 datasource db {
-  provider     = "postgresql"
-  url          = env("DATABASE_URL")
-  directUrl    = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Category {
@@ -39,7 +39,33 @@ model Companion {
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
 
-  @@index([categoryId])
+  messages Message[]
+
   // @@fulltext([name])
   // ^^ will only work for the mysql this one is postgre, As it is hosted on supabase inside sqleditor execute "CREATE EXTENSION IF NOT EXISTS pg_trgm;""
+
+  @@index([categoryId])
+}
+
+// Message can either be sent from the user or the system
+enum Role {
+  user
+  system
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  role      Role
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  companionId String
+  userId      String
+
+  // onDelete as cascade to delete messages as well when the companion is Deleted 
+  // Also you wont be able to delete as it will have relations with other
+  companion Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
+
+  @@index([companionId])
 }
