@@ -7,16 +7,39 @@
 // hosted on neon; email outllok
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-}        
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  directUrl    = env("DIRECT_URL")
+}
 
 model Category {
-  id   String @id @default(uuid())
-  name String
+  id         String      @id @default(uuid())
+  name       String
+  companions Companion[]
+}
+
+model Companion {
+  id           String @id @default(uuid())
+  userId       String
+  userName     String
+  src          String
+  name         String @db.Text
+  description  String
+  instructions String @db.Text
+  seed         String @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  @@index([categoryId])
+  // @@fulltext([name])
+  // ^^ will only work for the mysql this one is postgre, As it is hosted on supabase inside sqleditor execute "CREATE EXTENSION IF NOT EXISTS pg_trgm;""
 }

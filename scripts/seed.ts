@@ -15,6 +15,7 @@ async function main(){
                 {name:"Scientists"},
                 {name:"Tech"},
                 {name:"Philosophy"},
+                {name:"Other"},
             ]
         })
     }catch(error){

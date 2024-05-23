@@ -4,7 +4,8 @@ CelebSavvy is a SaaS AI Companion app currently under development. It allows use
 
 ## Features
 
-- **Frontend**: Next.js, React, and TypeScript
+- **Frontend**: Next.js, TypeScript
+- **Validation**: Zod
 - **Styling**: TailwindCSS
 - **Backend**: Node.js and Express
 - **Database**: MongoDB
