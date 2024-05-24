@@ -2,7 +2,7 @@ npx prisma generate
 npx prisma db push
 npx prisma studio
 
-// For Seed Script
+--------- For Seed Script ----------------
 node .\scripts\seed.ts
 
 
