@@ -1,6 +1,7 @@
 "use client";
 
 import { Companion, Message } from "@prisma/client";
+import { ChatHeader } from "./chat-header";
 
 interface ChatClientProps{
     companion: Companion &{
@@ -11,10 +12,12 @@ interface ChatClientProps{
     };
 };
 
-export const ChatClient = () =>{
+export const ChatClient = ({
+    companion
+}: ChatClientProps) =>{
     return(
-        <div>
-            Chat Client
+        <div className="flex flex-col h-full p-4 space-y-2">
+            <ChatHeader companion={companion} />
         </div>
     );
 };
