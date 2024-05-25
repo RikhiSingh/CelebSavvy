@@ -46,7 +46,7 @@ const ChatIdPage = async ({
     };
 
     return (
-        <div>
+        <div className="h-full">
             <ChatClient companion={companion}/>
         </div>
     );
