@@ -42,7 +42,7 @@ export const Companions = ({
                 >
                     <Link href={`/chat/${item.id}`}>
                         <CardHeader className="flex items-center justify-center text-center text-muted-foreground">
-                            <div className="relative w-32 h-32">
+                            <div className="relative w-32 h-32 mb-2">
                                 <Image 
                                     src={item.src}
                                     fill
