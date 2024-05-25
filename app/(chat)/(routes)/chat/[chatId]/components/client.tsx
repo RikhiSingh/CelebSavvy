@@ -1,6 +1,7 @@
 "use client";
 
 import { Companion, Message } from "@prisma/client";
+
 import { ChatHeader } from "./chat-header";
 
 interface ChatClientProps{
