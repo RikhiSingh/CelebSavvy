@@ -23,7 +23,7 @@ export const Companions = ({
                         src="/empty.png"
                     />
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-m text-muted-foreground">
                     No companions found!
                 </p>
             </div>
