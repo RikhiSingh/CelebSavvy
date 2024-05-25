@@ -63,6 +63,7 @@ export async function DELETE(
 
         const companion = await prismadb.companion.delete({
             where: {
+                // only user who created that companion can delete that
                 userId,
                 id: params.companionId,
             }
