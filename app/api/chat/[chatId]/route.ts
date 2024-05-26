@@ -98,7 +98,7 @@ export async function POST(
                 .call(
                     `
                         ONLY generate plain sentences without prefix of who is speaking. DO NOT USE ${name}: prefix.
-
+                        RESPOND WITHIN 50 words
                         ${companion.instructions}
                         
                         Below are the relevant details about ${name}'s past and the conversation you are in.
