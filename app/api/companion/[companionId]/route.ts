@@ -1,4 +1,5 @@
 import prismadb from "@/lib/prismadb";
+import { checkSubscription } from "@/lib/subscription";
 import { auth, currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
@@ -23,7 +24,12 @@ export async function PATCH(
             return new NextResponse("Missing Required Fields", { status: 400 });
         };
 
-        // TODO Check for subscription
+        const isPro = await checkSubscription();
+
+        if (!isPro) {
+            return new NextResponse("Pro Subscription is required", { status: 403 });
+        };
+
         // Prevent users from accessing POST API if they don't have a valid subscription
 
         const companion = await prismadb.companion.update({
@@ -51,6 +57,7 @@ export async function PATCH(
     };
 };
 
+// can delete even if their subscription expired
 export async function DELETE(
     req: Request,
     { params }: { params: { companionId: string } }
