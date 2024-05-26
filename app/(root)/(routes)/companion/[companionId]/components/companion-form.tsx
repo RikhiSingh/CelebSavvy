@@ -295,7 +295,7 @@ export const CompanionForm = ({
                                     />
                                 </FormControl>
                                 <FormDescription>
-                                    Example Conversaton
+                                    Example Conversation
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
