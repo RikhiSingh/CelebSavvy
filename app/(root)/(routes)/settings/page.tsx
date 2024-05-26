@@ -5,8 +5,8 @@ const SettingsPage = async () => {
     const isPro = await checkSubscription();
 
     return (
-        <div className="h-full p-4 space-y-2">
-            <h3 className="text-lg font-medium">
+        <div className="h-full p-4 space-y-2 flex flex-col items-center gap-4">
+            <h3 className="text-2xl font-medium text-center">
                 Settings
             </h3>
             <div className="text-muted-foreground text-sm">
