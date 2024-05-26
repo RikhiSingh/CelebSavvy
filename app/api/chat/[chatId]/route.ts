@@ -93,6 +93,10 @@ export async function POST(
 
         model.verbose = true;
 
+
+        // Set a longer timeout (e.g., 3 minutes to prevent 504 error)
+        const timeoutDuration = 3 * 60 * 1000; // 3 minutes in milliseconds
+
         const resp = String(
             await model
                 .call(
@@ -105,7 +109,10 @@ export async function POST(
                         ${relevantHistory}
 
                         ${recentChatHistory}\n${companion.name};
-                    `
+                    `,
+                    {
+                        timeout: timeoutDuration,
+                    }
                 )
                 .catch(console.error)
         );
