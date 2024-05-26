@@ -8,6 +8,10 @@ import { BotAvatar } from "./bot-avatar";
 import { UserAvatar } from "./user-avatar";
 import { Button } from "./ui/button";
 import { Copy } from "lucide-react";
+import dynamic from "next/dynamic";
+import React, { useState, useEffect } from "react";
+
+const QueueMessage = dynamic(() => import("./queue-message"), { ssr: false });
 
 export interface ChatMessageProps {
     role: "system" | "user",
@@ -24,6 +28,14 @@ export const ChatMessage = ({
 }: ChatMessageProps) => {
     const { toast } = useToast();
     const { theme } = useTheme();
+
+    const [showQueueMessage, setShowQueueMessage] = useState(false);
+
+    useEffect(() => {
+        if (isLoading) {
+            setShowQueueMessage(true);
+        }
+    }, [isLoading]);
 
     const onCopy = () => {
         // If not content to copy break
@@ -45,13 +57,20 @@ export const ChatMessage = ({
             {role !== "user" && src && <BotAvatar src={src} />}
             <div className="rounded-md px-4 py-2 max-w-sm text-sm bg-primary/10">
                 {isLoading
-                    ? <BeatLoader size={5} color={theme === "light" ? "black" : "white"} />
+                    ? (
+                        <>
+                            <div className="flex flex-row items-center justify-center">
+                                <BeatLoader size={5} color={theme === "light" ? "black" : "white"} />
+                                {showQueueMessage && <QueueMessage initialQueueNumber={Math.floor(Math.random() * (40 - 20 + 1)) + 20} />}
+                            </div>
+                        </>
+                    )
                     : content
 
                 }
             </div>
-            {role ==="user" && <UserAvatar />}
-            {role !== "user" && !isLoading&& (
+            {role === "user" && <UserAvatar />}
+            {role !== "user" && !isLoading && (
                 <Button
                     onClick={onCopy}
                     // we gave group to parent div
@@ -59,7 +78,7 @@ export const ChatMessage = ({
                     size="icon"
                     variant='ghost'
                 >
-                    <Copy className="w-4 h-4"/>
+                    <Copy className="w-4 h-4" />
                 </Button>
             )}
         </div>
