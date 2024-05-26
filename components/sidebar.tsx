@@ -6,6 +6,10 @@ import { Home, Plus, Settings } from "lucide-react";
 
 import { usePathname, useRouter } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+
 interface SidebarPro {
     isPro: boolean;
 };
@@ -64,6 +68,43 @@ export const Sidebar = ({
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+            <div className="flex justify-center">
+                <div className="space-y-2">
+                    <Link href="https://github.com/RikhiSingh" target="_blank" passHref>
+                        <Button size="lg" variant="ghost" className="w-full">
+                            <Image
+                                src="/github.svg"
+                                alt="Github"
+                                height={40}
+                                width={40}
+                                className="rounded pb-8"
+                            />
+                        </Button>
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/rikhi-singh/" target="_blank" passHref>
+                        <Button size="lg" variant="ghost" className="w-full">
+                            <Image
+                                src="/linkedIn.png"
+                                alt="LinkedIn"
+                                height={43}
+                                width={43}
+                                className="rounded pb-8 ml-1"
+                            />
+                        </Button>
+                    </Link>
+                    <Link href="https://www.instagram.com/rikhi_singh/" target="_blank" passHref>
+                        <Button size="lg" variant="ghost" className="w-full">
+                            <Image
+                                src="/igLogo.svg"
+                                alt="Instagram"
+                                height={40}
+                                width={40}
+                                className="rounded pb-8"
+                            />
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>
