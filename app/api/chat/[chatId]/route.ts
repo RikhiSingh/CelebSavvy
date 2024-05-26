@@ -104,7 +104,7 @@ export async function POST(
                         Below are the relevant details about ${name}'s past and the conversation you are in.
                         ${relevantHistory}
 
-                        ${recentChatHistory}\n${name};
+                        ${recentChatHistory}\n${companion.name};
                     `
                 )
                 .catch(console.error)

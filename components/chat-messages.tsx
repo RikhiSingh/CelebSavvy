@@ -50,7 +50,7 @@ export const ChatMessages = ({
                     key={message.content}
                     role={message.role}
                     content={message.content}
-                    src={message.src}
+                    src={companion.src}
                 />
             ))}
             {/* while Ai is rendering a message */}
