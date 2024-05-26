@@ -121,7 +121,7 @@ export const CompanionForm = ({
             // TODO: If not able to refresh the home page after redirected remove the comment from the window.location.href
 
             // refresh the home page after companion created
-            // window.location.href = "/";
+            window.location.href = "/";
         } catch (error) {
             toast({
                 variant: "destructive",
