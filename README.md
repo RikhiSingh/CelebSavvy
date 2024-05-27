@@ -1,13 +1,14 @@
 # CelebSavvy
 
-CelebSavvy is a SaaS AI Companion app currently under development. It allows users to chat with AI versions of their favorite celebrities and more. Built using modern web technologies, this project aims to deliver an engaging and interactive user experience.
+CelebSavvy is a SaaS AI Companion app. It allows users to chat with AI versions of their favorite celebrities and more. Built using modern web technologies, this project aims to deliver an engaging and interactive user experience.
 
 ## Features
 
 - **Frontend**: Next.js, TypeScript
 - **Validation**: Zod
 - **Styling**: TailwindCSS, ShadCN
-- **Database**: Supabase
+- **Database**: Supabase, PineCone
+- **AI**: Llama, Replicate AI
 - **State Management**: Zustand
 - **AI Integration**: Axios
 - **Authentication**: Google SSO, Clerk
@@ -41,6 +42,24 @@ CelebSavvy is a SaaS AI Companion app currently under development. It allows use
     DIRECT_URL        
 
     NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+
+   PINECONE_INDEX
+   PINECONE_ENVIRONMENT
+   PINECONE_API_KEY
+
+   UPSTASH_REDIS_REST_URL
+   UPSTASH_REDIS_REST_TOKEN=
+
+   # For embedding we using llama
+   OPENAI_API_KEY
+
+   REPLICATE_API_TOKEN
+
+   STRIPE_API_KEY
+
+   NEXT_PUBLIC_APP_URL
+
+   STRIPE_WEBHOOK_SECRET
 
 4. **Run the development server**
    ```bash
