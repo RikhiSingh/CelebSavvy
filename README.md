@@ -1,6 +1,6 @@
 # CelebSavvy
 
-CelebSavvy is a SaaS AI Companion app. It allows users to chat with AI versions of their favorite celebrities and more. Built using modern web technologies, this project aims to deliver an engaging and interactive user experience.
+CelebSavvy is a SaaS AI Companion app. It allows users to chat with AI versions of your favorite celebrities and more. Built using modern web technologies, this project aims to deliver an engaging and interactive user experience.
 
 ## Features
 
